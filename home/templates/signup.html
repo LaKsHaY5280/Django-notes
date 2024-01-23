@@ -1,0 +1,39 @@
+<!-- FILEPATH: /C:/BUSTER/CODE STORMBASE/ALL CODE/DJANGO/TUTORIAL/testrun/home/templates/home.html -->
+
+{% extends "base.html" %} {% block start %}
+
+<h1>Welcome to the Sign Up Page!</h1>
+<p>This is the content of your Sign Up page.</p>
+
+<a href="/home">Go to Home Page</a>
+
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+    {{ message }}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<form method="post">
+  {% csrf_token %}
+
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" required /><br /><br />
+
+  <label for="username">UserName:</label>
+  <input type="text" id="username" name="username" required /><br /><br />
+
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password" required /><br /><br />
+
+  <p>
+    <a href="/login/">Login</a>
+  </p>
+  {{ form.as_p }}
+  <input type="submit" value="Submit" />
+</form>
+
+{% endblock start %}

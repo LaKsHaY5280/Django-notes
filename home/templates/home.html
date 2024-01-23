@@ -1,0 +1,44 @@
+<!-- FILEPATH: /C:/BUSTER/CODE STORMBASE/ALL CODE/DJANGO/TUTORIAL/testrun/home/templates/home.html -->
+
+{% extends "base.html" %} {% block start %}
+
+<h1>Welcome to the Home Page!</h1>
+<p>This is the content of your Home page.</p>
+
+<a href="/login">Go to Login Page</a>
+<a href="/form">Go to Form Page</a>
+
+<form>
+  <label for="search">Search:</label>
+  <input type="text" id="search" name="search" />
+  <input type="submit" value="Search" />
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Email</th>
+      <th>Created by</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for person in peoples %}
+    <tr>
+      <td>{{ person.name }}</td>
+      <td>{{ person.age }}</td>
+      <td>{{ person.email }}</td>
+      <td>{{ person.user }}</td>
+      <td>
+        <a href="/del-person/{{ person.id }}">Delete</a>
+      </td>
+      <td>
+        <a href="/upd-person/{{ person.id }}">Update</a>
+      </td>
+    </tr>
+    {% endfor %} 
+  </tbody>
+</table>
+
+{% endblock start %}
